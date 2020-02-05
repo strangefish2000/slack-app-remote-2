@@ -18,7 +18,6 @@ class Slack extends React.Component {
           </div>
         </div>
         <div className="list-panel">List Panel</div>
-        <div className="imput-panel">Imput Panel</div>
       </div>
     );
   }
