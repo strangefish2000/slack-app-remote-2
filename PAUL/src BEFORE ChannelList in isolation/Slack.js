@@ -7,12 +7,11 @@ class Slack extends React.Component {
   state = {};
 
   render() {
-    let { channels } = this.props;
     return (
       <div className="slack-container">
         <div className="menu-panel">
           <div className="channels">
-            <ChannelPanel channels={channels} />
+            <ChannelPanel />
           </div>
           <div className="people">
             <PeoplePanel />

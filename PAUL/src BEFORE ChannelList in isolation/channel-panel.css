@@ -1,0 +1,10 @@
+.channel-panel {
+  height: 300px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.title {
+  margin-bottom: 12px;
+  font-size: 100%;
+}
