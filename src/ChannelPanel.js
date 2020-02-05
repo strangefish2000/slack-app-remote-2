@@ -1,6 +1,6 @@
 import React from "react";
 import "./channel-panel.css";
-import Channel from "./Channel.js";
+import ChannelList from "./Channel.js";
 
 class ChannelPanel extends React.Component {
   render() {
