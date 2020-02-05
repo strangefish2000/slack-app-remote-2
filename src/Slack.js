@@ -1,8 +1,7 @@
 import React from "react";
-
-const ChannelPanel = () => <span className="channel-panel">ChannelPanel</span>;
-
-const PeoplePanel = () => <span className="people-panel">PeoplePanel</span>;
+import "./Slack.css";
+import ChannelPanel from "./ChannelPanel.js";
+import PeoplePanel from "./PeoplePanel.js";
 
 class Slack extends React.Component {
   state = {};
@@ -10,9 +9,16 @@ class Slack extends React.Component {
   render() {
     return (
       <div className="slack-container">
-        Slack container
-        <ChannelPanel />
-        <PeoplePanel />
+        <div className="menu-panel">
+          <div className="channels">
+            <ChannelPanel />
+          </div>
+          <div className="people">
+            <PeoplePanel />
+          </div>
+        </div>
+        <div className="list-panel">List Panel</div>
+        <div className="imput-panel">Imput Panel</div>
       </div>
     );
   }

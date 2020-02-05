@@ -1,3 +1,6 @@
 .slack-container {
   border: solid 1px green;
+  margin: auto;
+  width: 90%;
+  height: 600px;
 }
