@@ -4,10 +4,37 @@ import ChannelPanel from "./ChannelPanel.js";
 import PeoplePanel from "./PeoplePanel.js";
 
 class Slack extends React.Component {
-  state = {};
+  state = {
+    channels: [
+      {
+        name: "general",
+        isActive: false
+      },
+      {
+        name: "help",
+        isActive: false
+      },
+      {
+        name: "react",
+        isActive: false
+      },
+      {
+        name: "redux",
+        isActive: false
+      },
+      {
+        name: "webpack",
+        isActive: false
+      },
+      {
+        name: "react-router",
+        isActive: false
+      }
+    ]
+  };
 
   render() {
-    let { channels } = this.props;
+    let { channels } = this.state;
     return (
       <div className="slack-container">
         <div className="menu-panel">
