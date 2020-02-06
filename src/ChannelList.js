@@ -1,5 +1,6 @@
 import React from "react";
 import "./channel-list.css";
+import Channel from "./Channel.js";
 
 const ChannelList = ({ channels }) => (
   <div className="channel-list">
@@ -10,9 +11,5 @@ const ChannelList = ({ channels }) => (
     </span>
   </div>
 );
-
-const Channel = ({ channel }) => {
-  return <div className="channel">{channel.name}</div>;
-};
 
 export default ChannelList;

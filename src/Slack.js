@@ -33,6 +33,21 @@ class Slack extends React.Component {
     ]
   };
 
+  setActive = (channel, i) => {
+    this.setState(state => {
+      const channels = state.channels.map((channel, j) => {
+        if (j === i) {
+          return (channel.isActive = true);
+        } else {
+          return channel;
+        }
+      });
+      return {
+        channel
+      };
+    });
+  };
+
   render() {
     let { channels } = this.state;
     return (

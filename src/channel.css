@@ -1,0 +1,8 @@
+.channel-button {
+  background-color: rgb(4, 77, 128);
+  color: white;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+}
