@@ -3,6 +3,9 @@ import "./Slack.css";
 import ChannelPanel from "./ChannelPanel.js";
 import PeoplePanel from "./PeoplePanel.js";
 
+
+//* activechannel:
+//* https://www.freecodecamp.org/forum/t/reactjs-using-setstate-to-update-a-single-property-on-an-object/146772
 class Slack extends React.Component {
   state = {
     channels: [
@@ -30,7 +33,8 @@ class Slack extends React.Component {
         name: "react-router",
         isActive: false
       }
-    ]
+    ],
+    activeChannel: {}
   };
 
   setActive = (channel, i) => {
