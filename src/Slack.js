@@ -3,6 +3,7 @@ import "./Slack.css";
 import ChannelPanel from "./ChannelPanel.js";
 import UserPanel from "./UserPanel.js";
 import InputPanel from "./InputPanel.js";
+import Messages from "./Messages.js";
 
 class Slack extends React.Component {
   state = {
@@ -60,7 +61,15 @@ class Slack extends React.Component {
       }
     ],
     activeChannelId: null,
-    activeUserId: null
+    activeUserId: null,
+    messages: {}
+  };
+
+  processFakeMessages = {fakeMessages} => {
+    this.setState({
+      ...this.state,
+      messages: fakeMessages
+    });
   };
 
   handleActiveChannel = channelId => {
@@ -98,7 +107,12 @@ class Slack extends React.Component {
           </div>
         </div>
         <div className="list-side-panel">
-          <div className="list-panel">List Panel</div>
+          <div className="list-panel">
+            <div classname="list-container">
+              <Messages messages={this.state.messages} />
+            </div>
+          </div>
+
           <div className="input-panel">
             {activeChannelId || activeUserId !== null ? <InputPanel /> : null}
           </div>
@@ -108,6 +122,51 @@ class Slack extends React.Component {
   }
 }
 
+const fakeMessages = [
+  {
+    name: "Sarah",
+    date: "DATE",
+    id: "lhiug98786",
+    messageText: "Hello, this is a message from Sarah"
+  },
+  {
+    name: "Dave",
+    date: "DATE",
+    id: "vjkefl7erw896",
+    messageText: "Hello, this is a message from Dave"
+  },
+  {
+    name: "Sarah",
+    date: "DATE",
+    id: "dsc888",
+    messageText: "Hello, this is a message from Sarah"
+  },
+  {
+    name: "Zack",
+    date: "DATE",
+    id: "a8798uihj",
+    messageText: "Hello, this is a message from Zack"
+  },
+  {
+    name: "Pam",
+    date: "DATE",
+    id: "bswlioje888",
+    messageText: "Hello, this is a message from Pam"
+  },
+  {
+    name: "Erin",
+    date: "DATE",
+    id: "s790854hfbr",
+    messageText: "Hello, this is a message from Erin"
+  }
+];
+
 export default Slack;
 
 //............................
+// PROPTYPES!
+
+//Add an item
+// const addToCart = item => {
+//   setCart(prevCart => [...prevCart, item]);
+// };
