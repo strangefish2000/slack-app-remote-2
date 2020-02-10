@@ -1,0 +1,17 @@
+.user-button {
+  background-color: rgb(4, 77, 128);
+  color: white;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+}
+
+.user-button-active {
+  background-color: rgb(230, 173, 45);
+  color: white;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+}
