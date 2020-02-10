@@ -2,6 +2,7 @@ import React from "react";
 import "./Slack.css";
 import ChannelPanel from "./ChannelPanel.js";
 import UserPanel from "./UserPanel.js";
+import InputPanel from "./InputPanel.js";
 
 class Slack extends React.Component {
   state = {
@@ -94,7 +95,12 @@ class Slack extends React.Component {
             />
           </div>
         </div>
-        <div className="list-panel">List Panel</div>
+        <div className="list-side-panel">
+          <div className="list-panel">List Panel</div>
+          <div className="input-panel">
+            {activeChannelId || activeUserId !== null ? <InputPanel /> : null}
+          </div>
+        </div>
       </div>
     );
   }
