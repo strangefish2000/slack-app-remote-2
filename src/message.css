@@ -1,0 +1,8 @@
+.message-container {
+  border: solid 1px green;
+  height: 20px;
+}
+
+.message-text {
+  color: red;
+}
