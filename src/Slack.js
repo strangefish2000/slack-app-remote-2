@@ -65,12 +65,14 @@ class Slack extends React.Component {
 
   handleActiveChannel = channelId => {
     this.setState({
+      activeUserId: null,
       activeChannelId: channelId
     });
   };
 
   handleActiveUser = userId => {
     this.setState({
+      activeChannelId: null,
       activeUserId: userId
     });
   };
