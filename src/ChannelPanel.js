@@ -2,10 +2,13 @@ import React from "react";
 import "./channel-panel.css";
 import ChannelList from "./ChannelList.js";
 
-const ChannelPanel = ({ channels }) => (
+const ChannelPanel = ({ channels, channelSelectedActive }) => (
   <div className="channel-panel">
     <h1 className="title">CHANNELS</h1>
-    <ChannelList channels={channels} />
+    <ChannelList
+      channels={channels}
+      channelSelectedActive={channelSelectedActive}
+    />
   </div>
 );
 

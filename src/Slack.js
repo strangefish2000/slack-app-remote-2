@@ -3,52 +3,40 @@ import "./Slack.css";
 import ChannelPanel from "./ChannelPanel.js";
 import PeoplePanel from "./PeoplePanel.js";
 
-
-//* activechannel:
-//* https://www.freecodecamp.org/forum/t/reactjs-using-setstate-to-update-a-single-property-on-an-object/146772
 class Slack extends React.Component {
   state = {
     channels: [
       {
         name: "general",
-        isActive: false
+        id: "fsiofh"
       },
       {
         name: "help",
-        isActive: false
+        id: "dfkgver"
       },
       {
         name: "react",
-        isActive: false
+        id: "vgaiuf"
       },
       {
         name: "redux",
-        isActive: false
+        id: "lkfdshae"
       },
       {
         name: "webpack",
-        isActive: false
+        id: "gdfcgkyu"
       },
       {
         name: "react-router",
-        isActive: false
+        id: "jkfdgb"
       }
     ],
-    activeChannel: {}
+    activeChannelId: null
   };
 
-  setActive = (channel, i) => {
-    this.setState(state => {
-      const channels = state.channels.map((channel, j) => {
-        if (j === i) {
-          return (channel.isActive = true);
-        } else {
-          return channel;
-        }
-      });
-      return {
-        channel
-      };
+  handleActiveChannel = channelId => {
+    this.setState({
+      activeChannelId: channelId
     });
   };
 
@@ -58,7 +46,10 @@ class Slack extends React.Component {
       <div className="slack-container">
         <div className="menu-panel">
           <div className="channels">
-            <ChannelPanel channels={channels} />
+            <ChannelPanel
+              channels={channels}
+              channelSelectedActive={this.handleActiveChannel}
+            />
           </div>
           <div className="people">
             <PeoplePanel />

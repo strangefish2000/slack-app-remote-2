@@ -36,7 +36,8 @@ class App extends React.Component {
     this.setState({
       selectedChannelId: channelId
     });
-  }; //* 3. TO THIS!
+  }; //* 3. TO THIS! ..as in andleChannelSelected()
+  //* BECAUSE: onChannelSelected(channel.id) === handleChannelSelected(channel.id)
 
   render() {
     const { channels, selectedChannelId } = this.state;
@@ -48,7 +49,7 @@ class App extends React.Component {
             <Channels
               channels={channels}
               selectedId={selectedChannelId}
-              onChannelSelected={this.handleChannelSelected} //* 2. VIA THIS
+              onChannelSelected={this.handleChannelSelected} //* 2. NAME CHANGE ONLY
             />
           </div>
         </div>
@@ -65,7 +66,10 @@ const Channels = ({ channels, selectedId, onChannelSelected }) => (
           key={channel.id}
           channel={channel}
           isSelected={channel.id === selectedId}
-          onClick={() => onChannelSelected(channel.id)} //*  2. ONCLICK RECEIVED. f-returns: var onChannelSelected = channel,id (which is the current channel)
+          onClick={() => onChannelSelected(channel.id)} //TODO TRY THIS AS A NON-ARROW FUNCTION
+          //* THIS CALLBACK FUNCTION IS SIMPLY A CALL TO handleChannelSelected... as would handleChannelSelected(channel.id)
+          //* FORGET THE NAME CHANGE FROM onChannelSelected TO this.handleChannelSelected (LINE 51)
+          //* Treat the callback (and all callbacks?) as if they calling directly to the actual function (the rest is just name changes)
         />
       ))}
     </span>
@@ -75,8 +79,7 @@ const Channels = ({ channels, selectedId, onChannelSelected }) => (
 const Channel = ({ channel, onClick }) => {
   return (
     <button className="channel-button" channel={channel} onClick={onClick}>
-      {" "}
-      //* 1. ONCLICK CALLS UP # {channel.name}
+      //* 1. ONCLICK CALLS UP to onClick at LINE 68.
     </button>
   );
 };
