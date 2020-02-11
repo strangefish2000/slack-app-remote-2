@@ -62,13 +62,17 @@ class Slack extends React.Component {
     ],
     activeChannelId: null,
     activeUserId: null,
-    messages: {}
+    messages: []
   };
 
-  processFakeMessages = {fakeMessages} => {
+  componentDidMount() {
+    this.processFakeMessages(fakeMessages.item);
+  }
+
+  processFakeMessages = item => {
     this.setState({
       ...this.state,
-      messages: fakeMessages
+      messages: item
     });
   };
 
