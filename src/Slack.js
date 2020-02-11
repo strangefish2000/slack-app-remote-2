@@ -66,15 +66,10 @@ class Slack extends React.Component {
   };
 
   componentDidMount() {
-    this.processFakeMessages(fakeMessages.item);
-  }
-
-  processFakeMessages = item => {
     this.setState({
-      ...this.state,
-      messages: item
+      messages: fakeMessages
     });
-  };
+  }
 
   handleActiveChannel = channelId => {
     this.setState({
