@@ -2,7 +2,7 @@ import React from "react";
 import "./user-list.css";
 import User from "./User.js";
 
-const UserList = ({ users, userSelectedActive, activeUserId }) => (
+const UsersList = ({ users, userSelectedActive, activeUserId }) => (
   <div className="user-list">
     <span>
       {users.map(user => (
@@ -17,4 +17,4 @@ const UserList = ({ users, userSelectedActive, activeUserId }) => (
   </div>
 );
 
-export default UserList;
+export default UsersList;

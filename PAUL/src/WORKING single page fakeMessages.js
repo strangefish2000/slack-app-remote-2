@@ -3,7 +3,33 @@ import ReactDOM from "react-dom";
 
 class App extends React.Component {
   state = {
-    messages: []
+    channels: [
+      {
+        name: "general",
+        id: "fsiofh"
+      },
+      {
+        name: "help",
+        id: "dfkgver"
+      },
+      {
+        name: "react",
+        id: "vgaiuf"
+      },
+      {
+        name: "redux",
+        id: "lkfdshae"
+      },
+      {
+        name: "webpack",
+        id: "gdfcgkyu"
+      },
+      {
+        name: "react-router",
+        id: "jkfdgb"
+      }
+    ],
+    messages = []
   };
 
   componentDidMount() {

@@ -1,11 +1,11 @@
 import React from "react";
 import "./user-panel.css";
-import UserList from "./UserList.js";
+import UsersList from "./UsersList.js";
 
-const UserPanel = ({ users, userSelectedActive, activeUserId }) => (
+const UsersPanel = ({ users, userSelectedActive, activeUserId }) => (
   <div className="user-panel">
     <h1 className="title">PEOPLE</h1>
-    <UserList
+    <UsersList
       users={users}
       activeUserId={activeUserId}
       userSelectedActive={userSelectedActive}
@@ -13,6 +13,6 @@ const UserPanel = ({ users, userSelectedActive, activeUserId }) => (
   </div>
 );
 
-export default UserPanel;
+export default UsersPanel;
 
 //...............
