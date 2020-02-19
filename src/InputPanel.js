@@ -1,15 +1,28 @@
 import React from "react";
 import "./input-panel.css";
 
-const InputPanel = ({ onMessageChange }) => {
-  return (
-    <form className="input">
-      <input className="input-field" type="text" onChange={onMessageChange} />
-    </form>
-  );
-};
+class InputPanel extends React.Component {
+  render() {
+    const { onMessageChange } = this.props;
+    return (
+      <form className="input">
+        <input className="input-field" type="text" onChange={onMessageChange} />
+      </form>
+    );
+  }
+}
 
 export default InputPanel;
 
-// value={this.State.value}
-//         onChange={this.handleChange}
+// const InputPanel = ({ onMessageChange, channels }) => {
+//   return (
+//     <form className="input">
+//       <input
+//         className="input-field"
+//         type="text"
+//         onChange={onMessageChange}
+//         channels={channels}
+//       />
+//     </form>
+//   );
+// };
