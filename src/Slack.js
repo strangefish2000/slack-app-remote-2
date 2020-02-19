@@ -13,12 +13,12 @@ class Slack extends React.Component {
     messagesByChannelId: createFakeActivity(channels, 15),
     messagesByPersonId: createFakeActivity(users, 5),
     activeChannelId: null,
-    activeusersId: null
+    activeUserId: null
   };
 
   handleActiveChannel = channelId => {
     this.setState({
-      activeusersId: null,
+      activeUserId: null,
       activeChannelId: channelId
     });
   };
@@ -26,12 +26,12 @@ class Slack extends React.Component {
   handleActiveusers = usersId => {
     this.setState({
       activeChannelId: null,
-      activeusersId: usersId
+      activeUserId: usersId
     });
   };
 
   render() {
-    const { channels, activeChannelId, users, activeusersId } = this.state;
+    const { channels, activeChannelId, users, activeUserId } = this.state;
     let messages = [];
 
     return (
@@ -46,9 +46,9 @@ class Slack extends React.Component {
           </div>
           <div className="userss">
             <UsersPanel
-              activeusersId={activeusersId}
+              activeUserId={activeUserId}
               users={users}
-              usersSelectedActive={this.handleActiveusers}
+              userSelectedActive={this.handleActiveusers}
             />
           </div>
         </div>
@@ -60,7 +60,7 @@ class Slack extends React.Component {
           </div>
 
           <div className="input-panel">
-            {activeChannelId || activeusersId !== null ? <InputPanel /> : null}
+            {activeChannelId || activeUserId !== null ? <InputPanel /> : null}
           </div>
         </div>
       </div>

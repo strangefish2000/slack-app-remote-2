@@ -1,7 +1,7 @@
 import React from "react";
 import "./input-panel.css";
 
-const InputPanel = () => {
+const InputPanel = ({ value, onMessageChange }) => {
   return (
     <div className="input">
       <input className="input-field" type="text" />
