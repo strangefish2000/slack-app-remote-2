@@ -1,11 +1,11 @@
 import React from "react";
 import "./input-panel.css";
 
-const InputPanel = ({ value, onMessageChange }) => {
+const InputPanel = ({ onMessageChange }) => {
   return (
-    <div className="input">
-      <input className="input-field" type="text" />
-    </div>
+    <form className="input">
+      <input className="input-field" type="text" onChange={onMessageChange} />
+    </form>
   );
 };
 
