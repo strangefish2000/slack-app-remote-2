@@ -4,6 +4,7 @@ import MenuPanel from "./MenuPanel.js";
 
 import { channels, users, createFakeActivity } from "./static-data.js";
 import ListSidePanel from "./ListSidePanel";
+import EmptyListSidePanel from "./EmptyListSidePanel";
 
 function nextId(messages) {
   return messages.length ? messages[messages.length - 1].id + 1 : 0;
@@ -83,6 +84,16 @@ class Slack extends React.Component {
     const { channels, activeChannelId, users, activeUserId } = this.state;
     let messages = [];
 
+    let isSomethingSelected = false;
+    if (activeChannelId) {
+      messages = this.state.messagesByChannelId[activeChannelId];
+      isSomethingSelected = true;
+    }
+    if (activeUserId) {
+      messages = this.state.messagesByPersonId[activeUserId];
+      isSomethingSelected = true;
+    }
+
     return (
       <div className="slack-container">
         <MenuPanel
@@ -94,10 +105,14 @@ class Slack extends React.Component {
           userSelectedActive={this.handleActiveusers}
         />
 
-        <ListSidePanel
-          messages={messages}
-          onSendMessage={this.handleMessagesById}
-        />
+        {isSomethingSelected ? (
+          <ListSidePanel
+            messages={messages}
+            onSendMessage={this.handleMessagesById}
+          />
+        ) : (
+          <EmptyListSidePanel />
+        )}
       </div>
     );
   }
