@@ -2,11 +2,37 @@ import React from "react";
 import "./input-panel.css";
 
 class InputPanel extends React.Component {
+  state = { text: "" };
+
+  setText(text) {
+    this.setState({ text });
+  }
+
+  handleKeyPress = event => {
+    if (!this.state.text) {
+      return;
+    }
+
+    if (event.key === "Enter") {
+      this.props.onSendMessage(this.state.text);
+      this.setText("");
+    }
+  };
+
+  handleChange = event => {
+    this.setText(event.target.value);
+  };
+
   render() {
-    const { onMessageChange } = this.props;
     return (
       <form className="input">
-        <input className="input-field" type="text" onChange={onMessageChange} />
+        <input
+          className="input-field"
+          type="text"
+          onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
+          value={this.state.text}
+        />
       </form>
     );
   }

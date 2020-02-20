@@ -10,19 +10,3 @@ body {
   display: flex;
   padding: 0px;
 }
-
-.menu-panel {
-  background-color: rgb(4, 77, 128);
-  color: white;
-  width: 20%;
-  padding: 0px;
-}
-
-.list-side-panel {
-  width: 80%;
-  background-color: white;
-}
-
-.list-panel {
-  min-height: 436px;
-}

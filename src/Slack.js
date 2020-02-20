@@ -1,10 +1,9 @@
 import React from "react";
 import "./Slack.css";
-import ChannelPanel from "./ChannelPanel.js";
-import UsersPanel from "./UsersPanel.js";
-import InputPanel from "./InputPanel.js";
-import Messages from "./Messages.js";
+import MenuPanel from "./MenuPanel.js";
+
 import { channels, users, createFakeActivity } from "./static-data.js";
+import ListSidePanel from "./ListSidePanel";
 
 function nextId(messages) {
   return messages.length ? messages[messages.length - 1].id + 1 : 0;
@@ -86,35 +85,19 @@ class Slack extends React.Component {
 
     return (
       <div className="slack-container">
-        <div className="menu-panel">
-          <div className="channels">
-            <ChannelPanel
-              activeChannelId={activeChannelId}
-              channels={channels}
-              channelSelectedActive={this.handleActiveChannel}
-            />
-          </div>
-          <div className="userss">
-            <UsersPanel
-              activeUserId={activeUserId}
-              users={users}
-              userSelectedActive={this.handleActiveusers}
-            />
-          </div>
-        </div>
-        <div className="list-side-panel">
-          <div className="list-panel">
-            <div classname="list-container">
-              <Messages messages={messages} />
-            </div>
-          </div>
+        <MenuPanel
+          activeChannelId={activeChannelId}
+          channels={channels}
+          channelSelectedActive={this.handleActiveChannel}
+          activeUserId={activeUserId}
+          users={users}
+          userSelectedActive={this.handleActiveusers}
+        />
 
-          <div className="input-panel">
-            {activeChannelId || activeUserId !== null ? (
-              <InputPanel onMessageChange={this.handleMessagesById} />
-            ) : null}
-          </div>
-        </div>
+        <ListSidePanel
+          messages={messages}
+          onSendMessage={this.handleMessagesById}
+        />
       </div>
     );
   }

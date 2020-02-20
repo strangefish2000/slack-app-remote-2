@@ -1,7 +1,8 @@
 .input {
   height: 40px;
-  border: solid 1px rgb(219, 214, 214);
+  border: solid 3px rgb(34, 233, 16);
 }
+/* border: solid 1px rgb(219, 214, 214); */
 
 .input-field {
   height: 32px;
