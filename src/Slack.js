@@ -6,6 +6,19 @@ import InputPanel from "./InputPanel.js";
 import Messages from "./Messages.js";
 import { channels, users, createFakeActivity } from "./static-data.js";
 
+function nextId(messages) {
+  return messages.length ? messages[messages.length - 1].id + 1 : 0;
+}
+
+function createMessage(event, messageId) {
+  return {
+    id: messageId,
+    userName: "Myself",
+    text: event.target.value,
+    timestamp: new Date()
+  };
+}
+
 class Slack extends React.Component {
   state = {
     channels,
@@ -31,27 +44,37 @@ class Slack extends React.Component {
     });
   };
 
-  handleMessagesByChannelId = event => {
+  handleMessagesById = text => {
     const { activeChannelId, activeUserId } = this.state;
 
-    if (activeChannelId !== null) {
-      return this.setState({
-        messageText: {
-          id: activeChannelId,
-          userName: "Myself",
-          text: event.target.value,
-          timestamp: new Date()
+    if (activeChannelId) {
+      this.setState({
+        ...this.state,
+        messagesByChannelId: {
+          ...this.state.messagesByChannelId,
+          [activeChannelId]: [
+            ...this.state.messagesByChannelId[activeChannelId],
+            createMessage(
+              text,
+              nextId(this.state.messagesByChannelId[activeChannelId])
+            )
+          ]
         }
       });
     }
 
-    if (activeUserId !== null) {
-      return this.setState({
-        messageText: {
-          id: activeUserId,
-          userName: "Myself",
-          text: event.target.value,
-          timestamp: new Date()
+    if (activeUserId) {
+      this.setState({
+        ...this.state,
+        messagesByPersonId: {
+          ...this.state.messagesByPersonId,
+          [activeUserId]: [
+            ...this.state.messagesByPersonId[activeUserId],
+            createMessage(
+              text,
+              nextId(this.state.messagesByPersonId[activeUserId])
+            )
+          ]
         }
       });
     }
@@ -88,7 +111,7 @@ class Slack extends React.Component {
 
           <div className="input-panel">
             {activeChannelId || activeUserId !== null ? (
-              <InputPanel onMessageChange={this.handleMessagesByChannelId} />
+              <InputPanel onMessageChange={this.handleMessagesById} />
             ) : null}
           </div>
         </div>
@@ -98,6 +121,32 @@ class Slack extends React.Component {
 }
 
 export default Slack;
+
+//! NOW DO PROPTYPES!!!!!!!!
+
+//............................
+
+// if (activeChannelId !== null) {
+//   return this.setState({
+//     messageText: {
+//       id: activeChannelId,
+//       userName: "Myself",
+//       text: event.target.value,
+//       timestamp: new Date()
+//     }
+//   });
+// }
+
+// if (activeUserId !== null) {
+//   return this.setState({
+//     messageText: {
+//       id: activeUserId,
+//       userName: "Myself",
+//       text: event.target.value,
+//       timestamp: new Date()
+//     }
+//   });
+// }
 
 //............................
 
@@ -117,7 +166,7 @@ export default Slack;
 //     messagesByPersonId: createFakeActivity(users, 5),
 //     activeChannelId: null,
 //     activeUserId: null,
-//     messageText: ""
+//     messageText: {}
 //   };
 
 //   handleActiveChannel = channelId => {
@@ -134,10 +183,30 @@ export default Slack;
 //     });
 //   };
 
-//   handleMessageChange = event => {
-//     this.setState({
-//       messageText: event.target.value
-//     });
+//   handleMessagesByChannelId = event => {
+//     const { activeChannelId, activeUserId } = this.state;
+
+//     if (activeChannelId !== null) {
+//       return this.setState({
+//         messageText: {
+//           id: activeChannelId,
+//           userName: "Myself",
+//           text: event.target.value,
+//           timestamp: new Date()
+//         }
+//       });
+//     }
+
+//     if (activeUserId !== null) {
+//       return this.setState({
+//         messageText: {
+//           id: activeUserId,
+//           userName: "Myself",
+//           text: event.target.value,
+//           timestamp: new Date()
+//         }
+//       });
+//     }
 //   };
 
 //   render() {
@@ -171,7 +240,7 @@ export default Slack;
 
 //           <div className="input-panel">
 //             {activeChannelId || activeUserId !== null ? (
-//               <InputPanel onMessageChange={this.handleMessageChange} />
+//               <InputPanel onMessageChange={this.handleMessagesByChannelId} />
 //             ) : null}
 //           </div>
 //         </div>
