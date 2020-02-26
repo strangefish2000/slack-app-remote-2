@@ -1,5 +1,6 @@
 import React from "react";
 import "./user.css";
+import { PropTypes } from "prop-types";
 
 const User = ({ user, onActiveUserClick, activeUserId }) => {
   return (
@@ -9,13 +10,19 @@ const User = ({ user, onActiveUserClick, activeUserId }) => {
       }
       user={user}
       onClick={onActiveUserClick}
-      isActive={activeUserId === user.id}
     >
       # {user.name}
     </button>
   );
 };
 
-export default User;
+User.propTypes = {
+  onActiveUserClick: PropTypes.func,
+  activeUserId: PropTypes.number,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string
+  })
+};
 
-//.................
+export default User;

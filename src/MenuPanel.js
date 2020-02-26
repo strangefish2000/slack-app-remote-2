@@ -1,7 +1,8 @@
 import React from "react";
-import ChannelPanel from "./ChannelPanel.js";
 import UsersPanel from "./UsersPanel.js";
+import ChannelPanel from "./ChannelPanel.js";
 import "./menu-panel.css";
+import { PropTypes } from "prop-types";
 
 const MenuPanel = ({
   activeChannelId,
@@ -29,6 +30,25 @@ const MenuPanel = ({
       </div>
     </div>
   );
+};
+
+MenuPanel.propTypes = {
+  activeChannelId: PropTypes.number,
+  channelSelectedActive: PropTypes.func,
+  activeUserId: PropTypes.number,
+  userSelectedActive: PropTypes.func,
+  channels: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string
+    }).isRequired
+  ),
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string
+    }).isRequired
+  )
 };
 
 export default MenuPanel;

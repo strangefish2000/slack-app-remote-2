@@ -1,8 +1,31 @@
 .message-container {
-  border: solid 1px green;
-  height: 20px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.user-name {
+  font-size: 90%;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.timestamp {
+  font-size: 70%;
+  font-weight: 300;
 }
 
 .message-text {
-  color: red;
+  font-size: 90%;
+  margin-top: 5px;
+  margin-bottom: 4px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+
+  float: left;
+  border: 1px solid #ddd;
+  margin-right: 0.5em;
+  border-radius: 4px;
 }

@@ -1,14 +1,13 @@
 import React from "react";
+import "./message.css";
 
-class Message extends React.Component {
-  render() {
-    const { message } = this.props;
-    return (
-      <div className="message-container">
-        <p className="message-text">{message.messageText}</p>
-      </div>
-    );
-  }
-}
+const Message = ({ message }) => (
+  <div className="message-container">
+    <span className="avatar" />
+    <span className="user-name">{message.userName}</span>
+    <span className="timestamp">{message.timestamp.toString()}</span>
+    <p className="message-text">{message.text}</p>
+  </div>
+);
 
 export default Message;

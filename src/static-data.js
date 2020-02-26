@@ -1,3 +1,5 @@
+import { PropTypes } from "prop-types";
+
 const channels = [
   { id: 1, name: "react" },
   { id: 2, name: "redux", hasUnreads: true },
@@ -26,6 +28,10 @@ function generateFakeMessages(count) {
   });
 }
 
+generateFakeMessages.propTypes = {
+  count: PropTypes.number.isRequired
+};
+
 function randomUser() {
   return users.map(u => u.name)[
     Math.floor(Math.random() * 1000) % users.length
@@ -39,5 +45,15 @@ function createFakeActivity(channels, maxMessages) {
     return result;
   }, {});
 }
+
+createFakeActivity.propTypes = {
+  maxMessages: PropTypes.number,
+  channels: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string
+    }).isRequired
+  )
+};
 
 export { channels, users, createFakeActivity };

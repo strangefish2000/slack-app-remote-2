@@ -1,5 +1,6 @@
 import React from "react";
 import "./channel.css";
+import { PropTypes } from "prop-types";
 
 const Channel = ({ channel, onActiveClick, activeChannelId }) => {
   return (
@@ -11,13 +12,19 @@ const Channel = ({ channel, onActiveClick, activeChannelId }) => {
       }
       channel={channel}
       onClick={onActiveClick}
-      isActive={activeChannelId === channel.id}
     >
       # {channel.name}
     </button>
   );
 };
 
-export default Channel;
+Channel.propTypes = {
+  onActiveClick: PropTypes.func.isRequired,
+  activeChannelId: PropTypes.number,
+  channel: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string
+  }).isRequired
+};
 
-//.................
+export default Channel;
